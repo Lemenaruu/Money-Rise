@@ -7,8 +7,16 @@ import 'package:money_rise/theme/color.dart';
 import '../theme/app_theme.dart';
 import '../theme/size.dart';
 
-class ServicePage extends StatelessWidget {
-  ServicePage({super.key});
+class ServicePage extends StatefulWidget {
+  const ServicePage({super.key});
+
+  @override
+  State<ServicePage> createState() => _ServicePageState();
+}
+
+class _ServicePageState extends State<ServicePage> {
+  int selectedIndex = -1;
+
   List<String> priceUsd = [
     '5 USD',
     '10 USD',
@@ -96,8 +104,24 @@ class ServicePage extends StatelessWidget {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 8.0),
                           child: ElevatedButton(
-                            style: btnWhiteStyle,
-                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              elevation: 0,
+                              minimumSize: const Size(double.infinity, 40),
+                              backgroundColor: AppColor.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                side: BorderSide(
+                                  color: selectedIndex == index
+                                      ? AppColor.burlyWood
+                                      : AppColor.white,
+                                ),
+                              ),
+                            ),
+                            // btnWhiteStyle,
+                            onPressed: () {
+                              setState(() {});
+                              selectedIndex = index;
+                            },
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(

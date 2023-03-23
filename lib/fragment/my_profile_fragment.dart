@@ -9,6 +9,7 @@ import '../theme/size.dart';
 
 class MyProfileFragment extends StatelessWidget {
   MyProfileFragment({super.key});
+ 
   List<String> gameImagesList = [
     'assets/images/valorant_mediumn.png',
     'assets/images/pubg.png',
@@ -170,7 +171,7 @@ class MyProfileFragment extends StatelessWidget {
                     ElevatedButton(
                       style: btnStyle,
                       onPressed: () {
-                        context.pushNamed(splash);
+                        context.goNamed(splash);
                       },
                       child: Text(
                         'Logout Now',
