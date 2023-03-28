@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "2849440354",
+    "project_id": "money-rise-81cd5",
+    "storage_bucket": "money-rise-81cd5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2849440354:android:10e8dc3c6ce8119096873b",
+        "android_client_info": {
+          "package_name": "com.example.money_rise"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "2849440354-nd5cglfddn31v9u9gjl10i06dkt2ls5h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDhndVJApnxX0EVmkIon8BjN-JZxPAM4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "2849440354-nd5cglfddn31v9u9gjl10i06dkt2ls5h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

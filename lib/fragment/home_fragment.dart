@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:money_rise/fragment/widgets/our_services_widget.dart';
@@ -7,8 +9,19 @@ import 'package:money_rise/theme/app_theme.dart';
 import '../theme/color.dart';
 import '../theme/size.dart';
 
-class HomeFragment extends StatelessWidget {
-  HomeFragment({super.key});
+class HomeFragment extends StatefulWidget {
+  const HomeFragment({super.key});
+
+  @override
+  State<HomeFragment> createState() => _HomeFragmentState();
+}
+
+class _HomeFragmentState extends State<HomeFragment> {
+  List<String> walletType = [
+    'Main Wallet',
+    'Wallet',
+  ];
+
   List<String> gameImagesList = [
     'assets/images/valorant_mediumn.png',
     'assets/images/pubg.png',
@@ -29,6 +42,7 @@ class HomeFragment extends StatelessWidget {
     'Coc',
     'Mlbb',
   ];
+
   List<String> categoryList = [
     'Game',
     'Entertainment',
@@ -51,7 +65,7 @@ class HomeFragment extends StatelessWidget {
                 child: Stack(
                   children: [
                     Container(
-                      height: size.height * 0.22,
+                      height: size.height * 0.24,
                       width: size.width,
                       color: AppColor.burlyWood,
                       child: Padding(
@@ -78,82 +92,14 @@ class HomeFragment extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      bottom: 0,
-                      child: SizedBox(
-                        width: size.width,
-                        height: 80,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 2,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.only(left: 12.0),
-                              child: ClipRRect(
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(20),
-                                ),
-                                child: Container(
-                                  color: Colors.grey.shade300,
-                                  width: size.width * 0.8,
-                                  height: 80,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 40,
-                                        color: Colors.grey.shade300,
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20, vertical: 2),
-                                        child: Row(
-                                          children: [
-                                            Image.asset(
-                                                "assets/images/wallet.png"),
-                                            w10,
-                                            Text(
-                                              'Main Wallet',
-                                              style: AppTheme.titleText,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        child: Divider(
-                                          thickness: 1,
-                                          height: 0,
-                                        ),
-                                      ),
-                                      Container(
-                                        color: Colors.grey.shade300,
-                                        height: 40,
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 20, vertical: 6),
-                                        child: Row(
-                                          children: [
-                                            Text(
-                                              '10000.00',
-                                              style: AppTheme.titleText
-                                                  .copyWith(fontSize: 21),
-                                            ),
-                                            Text(
-                                              ' (MMK)',
-                                              style: AppTheme.titleText,
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
+                      bottom: 1,
+                      child:
+                          WalletCardWidget(size: size, walletType: walletType),
                     ),
                   ],
                 ),
               ),
-              h20,
+              h10,
               Center(
                 child: SizedBox(
                   width: size.width * 0.6,
@@ -330,22 +276,190 @@ class HomeFragment extends StatelessWidget {
                 ),
               ),
               h10,
-              Padding(
-                padding: pdAll12,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(15),
-                  child: Image.asset(
-                    'assets/images/valorant_bg.png',
-                    height: 122,
-                    width: size.width,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ),
+              const CarouselSliderAndDotsIndicatorsWidget(),
+
               // h10,
               OurServicesWidget(size: size)
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class WalletCardWidget extends StatelessWidget {
+  const WalletCardWidget({
+    super.key,
+    required this.size,
+    required this.walletType,
+  });
+
+  final Size size;
+  final List<String> walletType;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size.width,
+      height: 80,
+      child: ListView.builder(
+        shrinkWrap: true,
+        scrollDirection: Axis.horizontal,
+        itemCount: walletType.length,
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.only(left: 12.0),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(20),
+              ),
+              child: Container(
+                color: Colors.grey.shade300,
+                width: size.width * 0.8,
+                height: 80,
+                child: Column(
+                  children: [
+                    Container(
+                      height: 40,
+                      color: Colors.grey.shade300,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 2),
+                      child: Row(
+                        children: [
+                          Image.asset("assets/images/wallet.png"),
+                          w10,
+                          Text(
+                            walletType[index],
+                            style: AppTheme.titleText,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      child: Divider(
+                        thickness: 1,
+                        height: 0,
+                      ),
+                    ),
+                    Container(
+                      color: Colors.grey.shade300,
+                      height: 40,
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 6),
+                      child: Row(
+                        children: [
+                          Text(
+                            '10000.00',
+                            style: AppTheme.titleText.copyWith(fontSize: 21),
+                          ),
+                          Text(
+                            ' (MMK)',
+                            style: AppTheme.titleText,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class CarouselSliderAndDotsIndicatorsWidget extends StatefulWidget {
+  const CarouselSliderAndDotsIndicatorsWidget({super.key});
+
+  @override
+  State<CarouselSliderAndDotsIndicatorsWidget> createState() =>
+      _CarouselSliderAndDotsIndicatorsWidgetState();
+}
+
+class _CarouselSliderAndDotsIndicatorsWidgetState
+    extends State<CarouselSliderAndDotsIndicatorsWidget> {
+  int _activeIndex = 0;
+
+  List<Widget> gameList = [
+    ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.asset(
+        'assets/images/valorant_bg.png',
+        // width: 1000,
+        fit: BoxFit.cover,
+      ),
+    ),
+    ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.asset(
+        'assets/images/valorant_bg.png',
+        fit: BoxFit.cover,
+      ),
+    ),
+    ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.asset(
+        'assets/images/valorant_bg.png',
+        fit: BoxFit.cover,
+      ),
+    ),
+    ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.asset(
+        'assets/images/valorant_bg.png',
+        fit: BoxFit.cover,
+      ),
+    ),
+  ];
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Padding(
+      padding: pdAll12,
+      child: SizedBox(
+        height: 150,
+        width: size.width,
+        child: Column(
+          children: [
+            h6,
+            Container(
+              height: 122,
+              width: double.maxFinite,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                // color: AppColor.black,
+              ),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  autoPlay: true,
+
+                  // aspectRatio: 3.0,
+
+                  enlargeCenterPage: true,
+                  onPageChanged: (index, reason) {
+                    setState(() {
+                      _activeIndex = index;
+                    });
+                  },
+                ),
+                items: gameList,
+              ),
+            ),
+            h4,
+            DotsIndicator(
+              decorator: DotsDecorator(
+                activeSize: const Size(4, 4),
+                activeColor: AppColor.grey900,
+                spacing: const EdgeInsets.all(2),
+                size: const Size(4, 4),
+              ),
+              dotsCount: gameList.length,
+              position: _activeIndex.toDouble(),
+            ),
+          ],
         ),
       ),
     );
