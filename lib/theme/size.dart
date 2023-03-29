@@ -49,6 +49,26 @@ InputDecoration inputDecoration = InputDecoration(
       borderSide: BorderSide(color: AppColor.white)),
 );
 
+InputDecoration inputDecoration2 = InputDecoration(
+  filled: true,
+  fillColor: AppColor.white,
+
+  // errorText: 'wrong',
+  // labelText: 'Username',
+  contentPadding: pdAll10,
+  isDense: true,
+
+  enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(30),
+    borderSide: BorderSide(color: AppColor.white),
+  ),
+
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(30),
+    borderSide: BorderSide(color: AppColor.white),
+  ),
+);
+
 ButtonStyle btnStyle = ElevatedButton.styleFrom(
   elevation: 0,
   shape: RoundedRectangleBorder(

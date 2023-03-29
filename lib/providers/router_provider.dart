@@ -60,7 +60,7 @@ final routerProvider = Provider<GoRouter>((ref) {
             name: home,
             path: '/home',
             pageBuilder: (context, state) =>
-                NoTransitionPage(child: HomeFragment()),
+                const NoTransitionPage(child: HomeFragment()),
           ),
           GoRoute(
             name: message,
@@ -90,7 +90,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: rootNavigatorKey,
         name: splash,
         path: "/splash",
-        pageBuilder: (context, state) => NoTransitionPage(
+        pageBuilder: (context, state) => const NoTransitionPage(
           child: SplashPage(),
         ),
       ),
@@ -98,7 +98,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         parentNavigatorKey: rootNavigatorKey,
         name: service,
         path: "/service",
-        pageBuilder: (context, state) => NoTransitionPage(
+        pageBuilder: (context, state) => const NoTransitionPage(
           child: ServicePage(),
         ),
       ),

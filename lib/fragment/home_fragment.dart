@@ -383,85 +383,62 @@ class _CarouselSliderAndDotsIndicatorsWidgetState
     extends State<CarouselSliderAndDotsIndicatorsWidget> {
   int _activeIndex = 0;
 
-  List<Widget> gameList = [
-    ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.asset(
-        'assets/images/valorant_bg.png',
-        // width: 1000,
-        fit: BoxFit.cover,
-      ),
-    ),
-    ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.asset(
-        'assets/images/valorant_bg.png',
-        fit: BoxFit.cover,
-      ),
-    ),
-    ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.asset(
-        'assets/images/valorant_bg.png',
-        fit: BoxFit.cover,
-      ),
-    ),
-    ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: Image.asset(
-        'assets/images/valorant_bg.png',
-        fit: BoxFit.cover,
-      ),
-    ),
+  List<String?> gameList = [
+    'assets/images/valorant_bg.png',
+    'assets/images/valorant_bg.png',
+    'assets/images/valorant_bg.png',
+    'assets/images/valorant_bg.png',
+
   ];
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Padding(
-      padding: pdAll12,
-      child: SizedBox(
-        height: 150,
-        width: size.width,
-        child: Column(
-          children: [
-            h6,
-            Container(
-              height: 122,
+    return Column(
+      children: [
+        h6,
+        CarouselSlider(
+          options: CarouselOptions(
+            scrollDirection: Axis.horizontal,
+            autoPlayAnimationDuration: const Duration(milliseconds: 800),
+            autoPlay: true,
+            autoPlayCurve: Curves.fastOutSlowIn,
+            enableInfiniteScroll: true,
+            height: 122,
+
+            // aspectRatio: 3.0,
+
+            enlargeCenterPage: true,
+            onPageChanged: (index, reason) {
+              setState(() {
+                _activeIndex = index;
+              });
+            },
+          ),
+          items: gameList.map((image) {
+            return SizedBox(
               width: double.maxFinite,
-              decoration: BoxDecoration(
+              child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                // color: AppColor.black,
-              ),
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  autoPlay: true,
-
-                  // aspectRatio: 3.0,
-
-                  enlargeCenterPage: true,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _activeIndex = index;
-                    });
-                  },
+                child: Image.asset(
+                  image!,
+                  fit: BoxFit.cover,
                 ),
-                items: gameList,
               ),
-            ),
-            h4,
-            DotsIndicator(
-              decorator: DotsDecorator(
-                activeSize: const Size(4, 4),
-                activeColor: AppColor.grey900,
-                spacing: const EdgeInsets.all(2),
-                size: const Size(4, 4),
-              ),
-              dotsCount: gameList.length,
-              position: _activeIndex.toDouble(),
-            ),
-          ],
+            );
+          }).toList(),
         ),
-      ),
+        h4,
+        DotsIndicator(
+          decorator: DotsDecorator(
+            activeSize: const Size(4, 4),
+            activeColor: AppColor.grey900,
+            spacing: const EdgeInsets.all(2),
+            size: const Size(4, 4),
+          ),
+          dotsCount: gameList.length,
+          position: _activeIndex.toDouble(),
+        ),
+      ],
     );
   }
 }
