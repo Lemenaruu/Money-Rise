@@ -46,7 +46,7 @@ class MyProfileFragment extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                height: size.height * 0.2,
+                height: size.height * 0.18,
                 width: size.width,
                 color: AppColor.burlyWood,
                 child: Padding(
@@ -91,6 +91,7 @@ class MyProfileFragment extends StatelessWidget {
                 padding: pdAll12,
                 child: Column(
                   children: [
+                    h8,
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -98,7 +99,7 @@ class MyProfileFragment extends StatelessWidget {
                         style: AppTheme.titleText,
                       ),
                     ),
-                    h10,
+                     h20,
                     ClipRRect(
                       borderRadius: const BorderRadius.all(
                         Radius.circular(20),
@@ -136,7 +137,7 @@ class MyProfileFragment extends StatelessWidget {
                         ],
                       ),
                     ),
-                    h10,
+                    h20,
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
@@ -144,7 +145,7 @@ class MyProfileFragment extends StatelessWidget {
                         style: AppTheme.titleText,
                       ),
                     ),
-                    h10,
+                    h20,
                     ClipRRect(
                       borderRadius: const BorderRadius.all(
                         Radius.circular(20),

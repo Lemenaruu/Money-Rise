@@ -58,14 +58,14 @@ class _HomeFragmentState extends State<HomeFragment> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: size.height * 0.28,
+              Container(
+                height: size.height * 0.24,
                 width: size.width,
-                // color: AppColor.greenAccent,
+                color: Colors.transparent,
                 child: Stack(
                   children: [
                     Container(
-                      height: size.height * 0.24,
+                      height: size.height * 0.2,
                       width: size.width,
                       color: AppColor.burlyWood,
                       child: Padding(
@@ -81,8 +81,8 @@ class _HomeFragmentState extends State<HomeFragment> {
                                 borderRadius: BorderRadius.circular(50),
                                 child: Image.asset(
                                   'assets/images/logo.png',
-                                  height: 70,
-                                  width: 70,
+                                  height: 72,
+                                  width: 72,
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -92,7 +92,9 @@ class _HomeFragmentState extends State<HomeFragment> {
                       ),
                     ),
                     Positioned(
-                      bottom: 1,
+                      bottom: 10,
+                      
+                      
                       child:
                           WalletCardWidget(size: size, walletType: walletType),
                     ),
@@ -300,53 +302,80 @@ class WalletCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: size.width,
-      height: 80,
+       
+                
+                  
+    
+      height: 90,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
         itemCount: walletType.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.only(left: 12.0),
-            child: ClipRRect(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(20),
-              ),
-              child: Container(
-                color: Colors.grey.shade300,
-                width: size.width * 0.8,
-                height: 80,
-                child: Column(
-                  children: [
-                    Container(
-                      height: 40,
-                      color: Colors.grey.shade300,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 2),
+            padding:  EdgeInsets.only(left: 12.0),
+            child: Container(
+              width: size.width *0.8,
+              
+              
+                
+                // color: Colors.amber,
+                // color: Colors.grey.shade300,
+              
+                 decoration:  BoxDecoration(
+                     color: Colors.grey.shade300,
+                     borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
+                ),
+                  
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey,
+                  blurRadius: 4.0,
+                  spreadRadius: 1, 
+                  offset: Offset(-4, 4)
+            
+                )
+              ],
+            ),
+              child: Column(
+               
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: 30,
+                 
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
+                          
+                                        
                           Image.asset("assets/images/wallet.png"),
                           w10,
                           Text(
                             walletType[index],
                             style: AppTheme.titleText,
                           ),
+                         
+                      
                         ],
                       ),
                     ),
-                    const SizedBox(
-                      child: Divider(
+                  ),
+                      Divider(
                         thickness: 1,
                         height: 0,
+                        // color: Colors.amber,
+                       
                       ),
-                    ),
-                    Container(
-                      color: Colors.grey.shade300,
-                      height: 40,
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 6),
+               
+                  SizedBox(
+                    height: 50,
+                    child: Padding(
+                   padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
                           Text(
@@ -360,8 +389,8 @@ class WalletCardWidget extends StatelessWidget {
                         ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           );

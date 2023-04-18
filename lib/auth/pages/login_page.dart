@@ -1,11 +1,9 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 import 'package:money_rise/auth/pages/signup_page.dart';
-import 'package:money_rise/fragment/home_fragment.dart';
-import 'package:money_rise/model/admin_model.dart';
-import 'package:money_rise/providers/login_provider.dart';
-import 'package:money_rise/providers/router_provider.dart';
+
 import 'package:money_rise/theme/color.dart';
 import 'package:money_rise/theme/size.dart';
 
@@ -92,61 +90,67 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   decoration: inputDecoration,
                 ),
                 h10,
-                Consumer(
-                  builder: (context, ref, child) {
-                    final userState = ref.watch(loginProvider);
-                    return ElevatedButton(
-                      style: btnStyle,
-                      onPressed: userState.isLoading
-                          ? () {}
-                          : () async {
-                              if (_formKey.currentState?.validate() == true) {
-                                final name = nameController.text;
-                                final pass = passwordController.text;
-                                final admin = Admin(name: name, password: pass);
-                                final isSuccess = await ref
-                                    .read(loginProvider.notifier)
-                                    .login(admin);
-                                if (isSuccess) {
-                                  if (mounted) {
-                                    Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomeFragment(),
-                                      ),
-                                      (route) => false,
-                                    );
-                                  }
-                                } else {
-                                  if (mounted) {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          title: const Text("Error"),
-                                          content: const Text(
-                                              "User Name or password is incorrect! Please tyr again"),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                context.pop();
-                                              },
-                                              child: const Text("Ok"),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  }
-                                }
-                              }
-                              // context.push('/home');
-                              context.goNamed(home);
-                            },
-                      child: const Text('Login Now'),
-                    );
-                  },
-                ),
+                ElevatedButton(
+                  style: btnStyle,
+                  onPressed:  (){
+                
+
+                }, child: Text('Login Now'),),
+                // Consumer(
+                //   builder: (context, ref, child) {
+                //     final userState = ref.watch(loginProvider);
+                //     return ElevatedButton(
+                //       style: btnStyle,
+                //       onPressed: userState.isLoading
+                //           ? () {}
+                //           : () async {
+                //               if (_formKey.currentState?.validate() == true) {
+                //                 final name = nameController.text;
+                //                 final pass = passwordController.text;
+                //                 final admin = Admin(name: name, password: pass);
+                //                 final isSuccess = await ref
+                //                     .read(loginProvider.notifier)
+                //                     .login(admin);
+                //                 if (isSuccess) {
+                //                   if (mounted) {
+                //                     Navigator.of(context).pushAndRemoveUntil(
+                //                       MaterialPageRoute(
+                //                         builder: (context) =>
+                //                             const HomeFragment(),
+                //                       ),
+                //                       (route) => false,
+                //                     );
+                //                   }
+                //                 } else {
+                //                   if (mounted) {
+                //                     showDialog(
+                //                       context: context,
+                //                       builder: (context) {
+                //                         return AlertDialog(
+                //                           title: const Text("Error"),
+                //                           content: const Text(
+                //                               "User Name or password is incorrect! Please tyr again"),
+                //                           actions: [
+                //                             TextButton(
+                //                               onPressed: () {
+                //                                 context.pop();
+                //                               },
+                //                               child: const Text("Ok"),
+                //                             ),
+                //                           ],
+                //                         );
+                //                       },
+                //                     );
+                //                   }
+                //                 }
+                //               }
+                //               // context.push('/home');
+                //               context.goNamed(home);
+                //             },
+                //       child: const Text('Login Now'),
+                //     );
+                //   },
+                // ),
                 h10,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

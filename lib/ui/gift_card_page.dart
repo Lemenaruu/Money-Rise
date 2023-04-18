@@ -74,6 +74,7 @@ class GiftCardPage extends StatelessWidget {
                   height: 35,
                   width: size.width,
                   child: ListView.builder(
+                    shrinkWrap: true,
                     itemCount: categoryList.length,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
@@ -151,7 +152,12 @@ class GiftCardPage extends StatelessWidget {
                   ),
                 ),
               ),
+               SizedBox(height: kBottomNavigationBarHeight,),
+             
             ],
+            
+            
+
           ),
         ),
       ),
