@@ -92,61 +92,13 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   decoration: inputDecoration,
                 ),
                 h10,
-                Consumer(
-                  builder: (context, ref, child) {
-                    final userState = ref.watch(loginProvider);
-                    return ElevatedButton(
+               ElevatedButton(
                       style: btnStyle,
-                      onPressed: userState.isLoading
-                          ? () {}
-                          : () async {
-                              if (_formKey.currentState?.validate() == true) {
-                                final name = nameController.text;
-                                final pass = passwordController.text;
-                                final admin = Admin(name: name, password: pass);
-                                final isSuccess = await ref
-                                    .read(loginProvider.notifier)
-                                    .login(admin);
-                                if (isSuccess) {
-                                  if (mounted) {
-                                    Navigator.of(context).pushAndRemoveUntil(
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomeFragment(),
-                                      ),
-                                      (route) => false,
-                                    );
-                                  }
-                                } else {
-                                  if (mounted) {
-                                    showDialog(
-                                      context: context,
-                                      builder: (context) {
-                                        return AlertDialog(
-                                          title: const Text("Error"),
-                                          content: const Text(
-                                              "User Name or password is incorrect! Please tyr again"),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () {
-                                                context.pop();
-                                              },
-                                              child: const Text("Ok"),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  }
-                                }
-                              }
-                              // context.push('/home');
-                              context.goNamed(home);
-                            },
+                      onPressed: 
+                           () {}
+                         ,
                       child: const Text('Login Now'),
-                    );
-                  },
-                ),
+                    ),
                 h10,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
