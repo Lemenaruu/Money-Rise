@@ -5,7 +5,6 @@ import 'package:money_rise/providers/router_provider.dart';
 import 'package:money_rise/theme/app_theme.dart';
 
 void main()  {
-  
 
   runApp(const ProviderScope(child: MyApp()));
 }

@@ -317,7 +317,7 @@ class WalletCardWidget extends StatelessWidget {
           return Padding(
             padding:  EdgeInsets.only(left: 12.0),
             child: Container(
-              width: size.width *0.8,
+              // width: size.
               
               
                 

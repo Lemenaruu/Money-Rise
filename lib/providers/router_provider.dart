@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:money_rise/auth/pages/forget_password_page.dart';
 import 'package:money_rise/auth/pages/splash_page.dart';
 import 'package:money_rise/fragment/message_fragment.dart';
 import 'package:money_rise/providers/scaffold_with_bottom_navigationbar.dart';
@@ -16,6 +17,8 @@ import '../ui/service_page.dart';
 import '../ui/top_up_detail_page.dart';
 import '../ui/top_up_main_page.dart';
 import '../ui/wallet_transfers_page.dart';
+
+const forgetPassword = 'forget_password';
 
 const home = 'home';
 const message = 'message';
@@ -164,6 +167,15 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: "/gift",
         pageBuilder: (context, state) => NoTransitionPage(
           child: GiftCardPage(),
+        ),
+      ),
+
+      GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: forgetPassword,
+        path: "/forget_password",
+        pageBuilder: (context, state) => NoTransitionPage(
+          child: ForgetPasswordPage(),
         ),
       ),
 

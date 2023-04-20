@@ -77,6 +77,7 @@ class MyProfileFragment extends StatelessWidget {
                             'Ma Eaint Myat Mon',
                             style: AppTheme.titleText,
                           ),
+                          h10,
                           Text(
                             '09*****8695',
                             style: AppTheme.txtSize11,
