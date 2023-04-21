@@ -89,6 +89,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
+  file_picker:
+    dependency: "direct main"
+    description:
+      name: file_picker
+      sha256: b85eb92b175767fdaa0c543bf3b0d1f610fe966412ea72845fe5ba7801e763ff
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.2.10"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -102,6 +110,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.1"
+  flutter_plugin_android_lifecycle:
+    dependency: transitive
+    description:
+      name: flutter_plugin_android_lifecycle
+      sha256: c224ac897bed083dabf11f238dd11a239809b446740be0c2044608c50029ffdf
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.9"
   flutter_riverpod:
     dependency: "direct main"
     description:
@@ -192,6 +208,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.8.0"
+  open_file:
+    dependency: "direct main"
+    description:
+      name: open_file
+      sha256: c9f504ca01826a600a407628598325fb1af9f0ec12d0a0303c824255e1d0c24b
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
   path:
     dependency: transitive
     description:
@@ -224,6 +248,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.5"
+  pinput:
+    dependency: "direct main"
+    description:
+      name: pinput
+      sha256: "1773743c188cdd2f8d0398ea708ec72645bb41ac9311755c4f7bb03a4184bdcf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.31"
   platform:
     dependency: transitive
     description:
@@ -317,6 +349,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  smart_auth:
+    dependency: transitive
+    description:
+      name: smart_auth
+      sha256: "8cfaec55b77d5930ed1666bb7ae70db5bade099bb1422401386853b400962113"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.8"
   source_span:
     dependency: transitive
     description:
@@ -373,6 +413,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.4.16"
+  universal_platform:
+    dependency: transitive
+    description:
+      name: universal_platform
+      sha256: d315be0f6641898b280ffa34e2ddb14f3d12b1a37882557869646e0cc363d0cc
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+1"
   vector_math:
     dependency: transitive
     description:
@@ -399,4 +447,4 @@ packages:
     version: "1.0.0"
 sdks:
   dart: ">=2.19.2 <3.0.0"
-  flutter: ">=3.3.0"
+  flutter: ">=3.7.0"

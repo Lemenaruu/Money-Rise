@@ -7,12 +7,17 @@ class AppTheme {
     // primaryColor: AppColor.red,
     scaffoldBackgroundColor: AppColor.grey100,
 
+    
+
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColor.burlyWood,
         textStyle: btnText,
       ),
     ),
+
+
+
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       unselectedItemColor: AppColor.black,
       selectedItemColor: AppColor.black,
@@ -23,14 +28,14 @@ class AppTheme {
       ),
     ),
 
-    appBarTheme: const AppBarTheme(
+    appBarTheme:  AppBarTheme(
       titleTextStyle: TextStyle(
         fontWeight: FontWeight.bold,
         color: Colors.black,
         fontSize: 18,
         fontFamily: 'poppin',
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: AppColor.grey100,
       foregroundColor: Colors.black,
       elevation: 0,
     ),

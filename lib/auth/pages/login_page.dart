@@ -78,6 +78,18 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               h4,
               TextFormField(
                 decoration: inputDecoration,
+                validator:(value) {
+                  if (value == null || value.isEmpty){
+                    return 'Please enter your username';
+
+
+
+                    
+                  }
+                  if (value.length < 2){
+                    return 'Your Username is invalid';
+                  }
+                },
               ),
               h4,
               Text(
@@ -88,7 +100,18 @@ class _LoginPageState extends ConsumerState<LoginPage> {
               h4,
               TextFormField(
                 onTap: () {},
+
                 decoration: inputDecoration,
+                 validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your password';
+              }
+              if (value.length < 8) {
+                return 'Your password must have at least 8 characters';
+              }
+              return null;
+                },
+              
               ),
               h10,
               ElevatedButton(
@@ -176,6 +199,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                   ),
                   GestureDetector(
                     onTap: () {
+                      context.pushNamed(forgetPassword);
                     
                     },
                     child: Text(

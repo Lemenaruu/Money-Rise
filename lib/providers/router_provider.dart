@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:money_rise/auth/pages/create_newpassword_page.dart';
 import 'package:money_rise/auth/pages/forget_password_page.dart';
+import 'package:money_rise/auth/pages/otp_page_page.dart';
 import 'package:money_rise/auth/pages/splash_page.dart';
 import 'package:money_rise/fragment/message_fragment.dart';
+import 'package:money_rise/fragment/profile/pin_management_page.dart';
+import 'package:money_rise/fragment/profile/view_account_page.dart';
 import 'package:money_rise/providers/scaffold_with_bottom_navigationbar.dart';
 import 'package:money_rise/ui/ads_page.dart';
 import 'package:money_rise/ui/bus_ticket_page.dart';
@@ -11,7 +15,7 @@ import 'package:money_rise/ui/service_confirm_page.dart';
 import 'package:money_rise/ui/wallet_exchange_page.dart';
 
 import '../fragment/home_fragment.dart';
-import '../fragment/my_profile_fragment.dart';
+import '../fragment/profile/my_profile_fragment.dart';
 import '../ui/gift_card_page.dart';
 import '../ui/service_page.dart';
 import '../ui/top_up_detail_page.dart';
@@ -19,10 +23,15 @@ import '../ui/top_up_main_page.dart';
 import '../ui/wallet_transfers_page.dart';
 
 const forgetPassword = 'forget_password';
+const otp = 'otp';
+const createNewPassword = 'create_newpassword';
 
 const home = 'home';
 const message = 'message';
 const myProfile = 'my_profile';
+
+const viewAccount = 'view_account';
+const pinManagement = 'pin_management';
 
 const splash = 'splash';
 const service = 'service';
@@ -176,6 +185,39 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: "/forget_password",
         pageBuilder: (context, state) => NoTransitionPage(
           child: ForgetPasswordPage(),
+        ),
+      ),
+       GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: otp,
+        path: "/otp",
+        pageBuilder: (context, state) => NoTransitionPage(
+          child: OtpPage(),
+        ),
+      ),
+       GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: createNewPassword,
+        path: "/create_newpassword",
+        pageBuilder: (context, state) => NoTransitionPage(
+          child: CreateNewPasswordPage(),
+        ),
+      ),
+
+       GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: viewAccount,
+        path: "/view_account",
+        pageBuilder: (context, state) => NoTransitionPage(
+          child: ViewAccountPage(),
+        ),
+      ),
+        GoRoute(
+        parentNavigatorKey: rootNavigatorKey,
+        name: pinManagement,
+        path: "/pin_management",
+        pageBuilder: (context, state) => NoTransitionPage(
+          child: PinManagementPage(),
         ),
       ),
 

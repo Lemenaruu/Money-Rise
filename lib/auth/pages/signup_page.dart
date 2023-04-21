@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:money_rise/auth/pages/login_page.dart';
@@ -14,6 +17,24 @@ class SignUpPage extends ConsumerStatefulWidget {
 }
 
 class _SignUpPageState extends ConsumerState<SignUpPage> {
+  File file = File(" ");
+
+void pickFile()async{
+  
+  FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.image);
+
+  if (result != null){
+   
+    setState(() {
+    file = File(result.files.single.path?? " " );
+      
+
+    });
+  }
+
+ 
+}
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -47,7 +68,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
               style:
                   AppTheme.titleText.copyWith(fontStyle: FontStyle.normal),
             ),
-            h4,
+            h10,
             TextFormField(
               decoration: inputDecoration,
             ),
@@ -57,7 +78,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
               style:
                   AppTheme.titleText.copyWith(fontStyle: FontStyle.normal),
             ),
-            h4,
+            h10,
             TextFormField(
               decoration: inputDecoration,
             ),
@@ -67,81 +88,102 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
               style:
                   AppTheme.titleText.copyWith(fontStyle: FontStyle.normal),
             ),
-            h4,
+            h10,
             TextFormField(
               onTap: () {},
               decoration: inputDecoration,
             ),
-            h10,
+            h20,
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: size.width * 0.4,
-                  height: size.height * 0.12,
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  decoration: BoxDecoration(
-                    color: AppColor.white,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: AppColor.black),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Front Photo',
-                        style: AppTheme.bodyText.copyWith(fontSize: 11),
-                      ),
-                      Image.asset(
-                        "assets/images/CloudUpload.png",
-                        height: 22,
-                        width: 22,
-                        color: AppColor.black,
-                      ),
-                      SizedBox(
-                        width: size.width * 0.3,
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          'Drag & Drop or Browse files',
+                
+               
+                GestureDetector
+                (
+                  onTap: pickFile,
+                  child: 
+                
+                  Container(
+                    
+                    width: size.width * 0.4,
+                    height: size.height * 0.12,
+                    // padding: const EdgeInsets.symmetric(vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppColor.white,
+                      
+                      
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: AppColor.black),
+                    ),
+                    child: 
+                    
+                   
+                     
+                      Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Front Photo',
                           style: AppTheme.bodyText.copyWith(fontSize: 11),
                         ),
-                      ),
-                    ],
+                        Image.asset(
+                          "assets/images/CloudUpload.png",
+                          height: 22,
+                          width: 22,
+                          color: AppColor.black,
+                        ),
+                        SizedBox(
+                          width: size.width * 0.3,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Drag & Drop or Browse files',
+                            style: AppTheme.bodyText.copyWith(fontSize: 11),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                Container(
-                  width: size.width * 0.4,
-                  height: size.height * 0.12,
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                  decoration: BoxDecoration(
-                    color: AppColor.white,
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: AppColor.black),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        'Back Photo',
-                        style: AppTheme.bodyText.copyWith(fontSize: 11),
-                      ),
-                      Image.asset(
-                        "assets/images/CloudUpload.png",
-                        height: 22,
-                        width: 22,
-                        color: AppColor.black,
-                      ),
-                      SizedBox(
-                        width: size.width * 0.3,
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          'Drag & Drop or Browse files',
+              
+                GestureDetector(
+                  onTap: pickFile,
+                  child: Container(
+                    width: size.width * 0.4,
+                    height: size.height * 0.12,
+                    // padding: const EdgeInsets.symmetric(vertical: 4),
+                    decoration: BoxDecoration(
+                      color: AppColor.white,
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: AppColor.black),
+                    ),
+                    child: 
+                  
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Back Photo',
                           style: AppTheme.bodyText.copyWith(fontSize: 11),
                         ),
-                      ),
-                    ],
+                        Image.asset(
+                          "assets/images/CloudUpload.png",
+                          height: 22,
+                          width: 22,
+                          color: AppColor.black,
+                        ),
+                        SizedBox(
+                          width: size.width * 0.3,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            'Drag & Drop or Browse files',
+                            style: AppTheme.bodyText.copyWith(fontSize: 11),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
@@ -152,7 +194,7 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
               style:
                   AppTheme.titleText.copyWith(fontStyle: FontStyle.normal),
             ),
-            h4,
+            h10,
             TextFormField(
               decoration: inputDecoration,
             ),
@@ -162,9 +204,10 @@ class _SignUpPageState extends ConsumerState<SignUpPage> {
               style:
                   AppTheme.titleText.copyWith(fontStyle: FontStyle.normal),
             ),
-            h4,
+            h10,
             TextFormField(
               decoration: inputDecoration,
+
             ),
             h10,
             ElevatedButton(
